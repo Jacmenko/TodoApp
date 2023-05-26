@@ -18,6 +18,11 @@ export type NewTaskForm = {
     dueDate?: Date;
 }
 
-export type onSubmit<NewTaskForm> = {
+export type onSubmitNewTask = {
+    opened: boolean; 
+    close: () => void
+} & onSubmit
+
+export type onSubmit = {
     submitHandler: (data: NewTaskForm) => void;
 }

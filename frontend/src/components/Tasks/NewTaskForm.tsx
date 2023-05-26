@@ -3,12 +3,12 @@ import { Modal, Group, Button, TextInput } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { NewTaskForm, onSubmit } from "../../types/types";
+import { NewTaskForm, onSubmitNewTask } from "../../types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newTaskSchema } from "../../schemas/schemas";
 
-const NewTask = (submitHandler: onSubmit) => {
-  const [opened, { open, close }] = useDisclosure(false);
+const NewTask = ({opened, close, submitHandler}: onSubmitNewTask) => {
+  
   const [value, setValue] = useState<Date | null>(null);
   const { register, handleSubmit, formState } = useForm<NewTaskForm>({
     resolver: zodResolver(newTaskSchema),
@@ -43,12 +43,9 @@ const NewTask = (submitHandler: onSubmit) => {
             maw={400}
             mx="auto"
           />
+          <Button type="submit">Add Task</Button>
         </form>
       </Modal>
-
-      <Group position="center">
-        <Button onClick={open}>Open centered Modal</Button>
-      </Group>
     </>
   );
 };
