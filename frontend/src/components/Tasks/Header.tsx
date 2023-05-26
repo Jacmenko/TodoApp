@@ -2,14 +2,14 @@ import { Stack, Title, Button } from "@mantine/core";
 import NewTask from "./NewTaskForm";
 import { useDisclosure } from "@mantine/hooks";
 import NewTaskForm from "./NewTaskForm";
-import { onSubmit } from "../../types/types";
+import { NewTaskFormType, onSubmit } from "../../types/types";
 
-const Header = ({submitHandler}: onSubmit) => {
-    const [opened, { close }] = useDisclosure(false);
-  
-    const addTaskHandler = () => {
+interface IHeader {
+    submitHandler: (data: NewTaskFormType) => void,
+}
 
-  }
+const Header: React.FC<IHeader> = ({submitHandler}) => {
+    const [opened, { close, open }] = useDisclosure(false);
   
     return (
     <>
@@ -17,7 +17,7 @@ const Header = ({submitHandler}: onSubmit) => {
         <Title c={"gray"} fz={"sm"}>
           To-Do
         </Title>
-        <Button onClick={addTaskHandler}>Add Task</Button>
+        <Button onClick={open}>Add Task</Button>
       </Stack>
       <hr />
       <NewTaskForm opened={opened} close={close} submitHandler={submitHandler}/>

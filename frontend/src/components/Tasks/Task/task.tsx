@@ -10,21 +10,29 @@ import {
   Group,
 } from "@mantine/core";
 
-const Task = (task: TaskData) => {
+interface ITaskProps {
+  task: TaskData;
+}
+
+const Task: React.FC<ITaskProps> = ({ task }) => {
   const [opened, { toggle }] = useDisclosure(false);
 
-  const daysLeft: number = new Date().getTime() - task.due_date.getTime();
+  const daysLeft: number = task.dueDate
+    ? new Date().getTime() - task.dueDate.getTime()
+    : 4;
 
   return (
     <Container>
       <Button>
         <Title fz={"sm"}>{task.title}</Title>
-        <Title
-          c={daysLeft < 3 ? (daysLeft < 1 ? "red" : "orange") : "blue"}
-          fz={"xs"}
-        >
-          {task.due_date.getDate()}
-        </Title>
+        {task.dueDate ? (
+          <Title
+            c={daysLeft < 3 ? (daysLeft < 1 ? "red" : "orange") : "blue"}
+            fz={"xs"}
+          >
+            {task.dueDate.getDate()}
+          </Title>
+        ) : null}
       </Button>
       <Box maw={400} mx="auto">
         <Group position="center" mb={5}>

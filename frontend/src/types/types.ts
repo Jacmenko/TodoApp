@@ -5,10 +5,10 @@ export type FooterProps = {
 export type TaskList = TaskData[];
 
 export type TaskData = {
-  id: number;
+  id: string;
   title: string;
-  description: string;
-  due_date: Date;
+  description?: string;
+  dueDate?: Date;
   completed: boolean;
 };
 

@@ -7,7 +7,13 @@ import { NewTaskForm, onSubmitNewTask } from "../../types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newTaskSchema } from "../../schemas/schemas";
 
-const NewTask = ({opened, close, submitHandler}: onSubmitNewTask) => {
+interface INewTaskProps {
+  opened: boolean,
+  close: () => void,
+  submitHandler: (data: NewTaskForm) => void,
+}
+
+const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
   
   const [value, setValue] = useState<Date | null>(null);
   const { register, handleSubmit, formState } = useForm<NewTaskForm>({

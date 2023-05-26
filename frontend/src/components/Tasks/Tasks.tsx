@@ -1,14 +1,31 @@
-import { TaskList } from "../../types/types";
+import { NewTaskFormType, TaskList } from "../../types/types";
 import { Stack, Center } from "@mantine/core";
 import Task from "./Task/task";
+import { useState } from "react";
+import Header from "./Header";
 
-const Tasks = (tasks: TaskList) => {
-  return (
+interface ITasksProps {
+    tasks: TaskList;
+}
+
+const Tasks: React.FC<ITasksProps> = ({tasks}) => {
+  const [currentTasks, setCurrentTasks] = useState(tasks);
+  
+    const onSubmitHandler = (data: NewTaskFormType) => {
+        
+        setCurrentTasks(prev => [...prev, {...data, id: "4", title: data.name, completed: false}]);
+    }
+
+    // Omit<TasksData, 'id'>
+    // BE: id -> uuid 
+
+    return (
     <Center>
+      <Header submitHandler={onSubmitHandler} />
       <Stack>
-        {tasks.map((task) => {
-          return <Task task={task} />;
-        })}
+        {currentTasks.map((task) => 
+           <Task key={task.id} task={task} />
+    )}
       </Stack>
     </Center>
   );

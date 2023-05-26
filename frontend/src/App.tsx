@@ -4,6 +4,7 @@ import Tasks from "./components/Tasks/Tasks";
 import { Stack } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { TaskList } from "./types/types";
+import ScrollTop from "./components/ScrollTop/ScrollTop";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -19,6 +20,7 @@ function App() {
       <Navigation />
       <Tasks tasks={tasks} />
       <Footer fetchTasks={fetchTasks} />
+      <ScrollTop />
     </Stack>
   );
 }
