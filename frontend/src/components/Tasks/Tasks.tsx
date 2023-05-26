@@ -1,6 +1,6 @@
 import { NewTaskFormType, TaskList } from "../../types/types";
 import { Stack, Center } from "@mantine/core";
-import Task from "./Task/task";
+import Task from "./Task/Task";
 import { useState } from "react";
 import Header from "./Header";
 

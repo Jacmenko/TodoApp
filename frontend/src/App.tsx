@@ -10,9 +10,11 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const data = await (await fetch("/")).json();
+    const data = (await fetch("/"));
 
-    setTasks(data);
+    console.log(data);
+
+    setTasks(await data.json());
   };
 
   return (

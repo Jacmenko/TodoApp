@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { DUMMY_TASKS } from '../utils/dummyTasks';
+import dummyTasks from '../utils/dummyTasks.json';
 
 const router = Router();
 
 router.get('/', (req, res) => {
-  return res.json(DUMMY_TASKS);
+  return res.json(dummyTasks);
 });
 
 export default router;
