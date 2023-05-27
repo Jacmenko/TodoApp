@@ -13,7 +13,7 @@ const Header: React.FC<IHeader> = ({submitHandler}) => {
     const [opened, { close, open }] = useDisclosure(false);
   
     return (
-    <>
+    <div>
       <Stack w={"60vw"} sx={{flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
         <Title c={"gray"} fz={"sm"}>
           To-Do
@@ -22,7 +22,7 @@ const Header: React.FC<IHeader> = ({submitHandler}) => {
       </Stack>
       <Divider size={"sm"} sx={{width: '100%'}} mt={5}  />
       <NewTaskForm opened={opened} close={close} submitHandler={submitHandler}/>
-    </>
+    </div>
   );
 };
 

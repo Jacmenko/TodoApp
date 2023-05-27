@@ -16,11 +16,15 @@ const Tasks: React.FC<ITasksProps> = ({tasks}) => {
         setCurrentTasks(prev => [...prev, {...data, id: "4", title: data.name, completed: false}]);
     }
 
+    const deleteTask = (e) => {
+      //implement
+    }
+
     // Omit<TasksData, 'id'>
     // BE: id -> uuid 
 
     return (
-    <Stack w={"60vw"} sx={{alignSelf: "center"}}>
+    <Stack w={"60vw"} sx={{alignSelf: "center", alignItems: "stretch"}}>
       <Header submitHandler={onSubmitHandler} />
       <Stack>
         {currentTasks.map((task) => 

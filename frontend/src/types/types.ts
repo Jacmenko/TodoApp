@@ -8,14 +8,14 @@ export type TaskData = {
   id: string;
   title: string;
   description?: string;
-  dueDate?: string;
+  dueDate?: Date;
   completed: boolean;
 };
 
 export type NewTaskFormType = {
     name: string;
     description?: string;
-    dueDate?: string;
+    dueDate?: Date;
 }
 
 export type onSubmitNewTask = {

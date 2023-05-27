@@ -1,5 +1,5 @@
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Group, Button, TextInput } from "@mantine/core";
+import { Modal, Group, Button, TextInput, Textarea } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,39 +15,45 @@ interface INewTaskProps {
 
 const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
   
-  const [value, setValue] = useState<Date | null>(null);
-  const { register, handleSubmit, formState } = useForm<NewTaskFormType>({
+  const [date, setDate] = useState<Date | null>(null);
+  const { register, handleSubmit, reset, formState } = useForm<NewTaskFormType>({
     resolver: zodResolver(newTaskSchema),
   });
 
+  const onSubmitHandler = (data: NewTaskFormType) => {
+    close()
+    reset()
+    submitHandler({...data, dueDate: date ?? undefined})
+  }
+
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Authentication" centered>
-        <form onSubmit={handleSubmit(submitHandler)}>
+      <Modal opened={opened} onClose={close} title="Add new task" centered>
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
           <TextInput
             {...register("name")}
+            maxLength={50}
+            type="text"
             error={formState.errors.name?.message}
             placeholder="Enter your task"
             label="Task name"
             withAsterisk
           />
-          <TextInput
+          <Textarea
             {...register("description")}
+            maxLength={500}
             error={formState.errors.description?.message}
             placeholder="Describe your task"
             label="Description"
           />
           <DateInput
-            {...register("dueDate")}
-            error={formState.errors.dueDate?.message}
             allowDeselect
-            value={value}
             valueFormat="DD-MM-YYYY"
-            onChange={setValue}
+            value={date}
+            onChange={setDate}
             label="Due date"
             placeholder="Select due date for the task"
-            maw={400}
-            mx="auto"
+            mb={"1vh"}
           />
           <Button w={"100%"} type="submit">Add Task</Button>
         </form>
