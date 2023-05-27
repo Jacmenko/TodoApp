@@ -32,7 +32,6 @@ const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
         <form onSubmit={handleSubmit(onSubmitHandler)}>
           <TextInput
             {...register("name")}
-            sx={{borderColor: "#027148"}}
             maxLength={50}
             type="text"
             error={formState.errors.name?.message}
