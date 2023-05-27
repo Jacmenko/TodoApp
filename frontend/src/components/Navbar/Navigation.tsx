@@ -9,7 +9,7 @@ const Navigation = () => {
       sx={{justifyContent:'center', alignItems:'center', borderBottom: "0"}}
       display={"flex"}
     >
-      <Title align="center" color="white">
+      <Title align="center" color="white" size={"2.5em"}>
         My To Do List
       </Title>
     </Header>

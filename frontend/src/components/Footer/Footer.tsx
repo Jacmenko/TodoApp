@@ -27,7 +27,7 @@ const Footer: React.FC<IFooterProps> = ({ fetchTasks, numberOfTasks }) => {
         w={"101vw"}
         sx={{ justifySelf: "flex-end", justifyContent: "space-evenly", gap: 0 }}
       >
-        <Title sx={{ whiteSpace: "nowrap" }} c={"white"}>
+        <Title size={"h2"} sx={{ whiteSpace: "nowrap" }} c={"white"}>
           Don't know what to do?
         </Title>
         <Button
