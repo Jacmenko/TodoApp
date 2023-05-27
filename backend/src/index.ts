@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import router from './routes/routes';
 
 const app = express();
@@ -6,6 +7,7 @@ const port = 4000;
 
 // JSON middleware
 app.use(express.json());
+app.use(cors())
 
 // parse URL encoded strings
 app.use(express.urlencoded({ extended: true }));

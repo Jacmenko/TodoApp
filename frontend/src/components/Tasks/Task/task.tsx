@@ -3,11 +3,8 @@ import { TaskData } from "../../../types/types";
 import {
   Container,
   Title,
-  Button,
-  Box,
   Collapse,
   Text,
-  Group,
   Stack,
   Grid,
   ActionIcon,
@@ -18,6 +15,7 @@ import { AiFillCalendar, AiOutlineCheckCircle } from "react-icons/ai";
 
 interface ITaskProps {
   task: TaskData;
+  deleteTask: (id: string) => void;
 }
 
 const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
@@ -37,6 +35,10 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
   ).slice(-2)}-${
     task.dueDate ? task.dueDate.getFullYear() : new Date().getFullYear()
   }`;
+
+  const deleteTaskHandler = () => {
+    deleteTask(task.id);
+  }
 
   return (
     <div>
@@ -72,8 +74,8 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
           </Stack>
         </Grid.Col>
         <Grid.Col span={2} offset={3} display={"flex"} sx={{justifyContent: "flex-end", alignItems: "center"}}>
-          <ActionIcon onClick={deleteTask}>
-            <AiOutlineCheckCircle style={{fontSize: "2rem", color: "green"}} />
+          <ActionIcon onClick={deleteTaskHandler}>
+            <AiOutlineCheckCircle style={{fontSize: "2rem", color: "#027148"}} />
           </ActionIcon>
         </Grid.Col>
       </Grid>

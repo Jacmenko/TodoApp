@@ -3,8 +3,6 @@ import dummyTasks from '../utils/dummyTasks.json';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  return res.status(200).send(JSON.parse(dummyTasks.tasks.toString()));
-});
+router.get('/', (req, res) => res.status(200).send(dummyTasks));
 
 export default router;

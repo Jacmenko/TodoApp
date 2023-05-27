@@ -1,15 +1,14 @@
 import { Stack, Title, Button } from "@mantine/core";
-import { FooterProps } from "../../types/types";
 
-const Footer = (props: FooterProps) => {
-  function fetchTasksHandler() {
-    props.fetchTasks();
-  }
+interface IFooterProps {
+  fetchTasks: () => void;
+}
 
+const Footer: React.FC<IFooterProps> = ({fetchTasks}) => {
   return (
     <Stack align="center" h={"12vh"} bg={"dark"} w={'100vw'} sx={{justifySelf: "flex-end", justifyContent: "space-evenly", gap: 0}}>
       <Title c={"white"}>Don't know what to do?</Title>
-      <Button onClick={fetchTasksHandler}>Give me some tasks!</Button>
+      <Button bg={"#027148"} sx={{"&:hover": {backgroundColor: "#027148"}}} onClick={fetchTasks}>Give me some tasks!</Button>
     </Stack>
   );
 };

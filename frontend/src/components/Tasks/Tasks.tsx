@@ -1,35 +1,43 @@
 import { NewTaskFormType, TaskList } from "../../types/types";
 import { Stack, Center } from "@mantine/core";
 import Task from "./Task/Task";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
+import { v4 as uuidv4 } from 'uuid';
 
 interface ITasksProps {
-    tasks: TaskList;
+  tasks: TaskList;
 }
 
-const Tasks: React.FC<ITasksProps> = ({tasks}) => {
+const Tasks: React.FC<ITasksProps> = ({ tasks }) => {
   const [currentTasks, setCurrentTasks] = useState(tasks);
-  
-    const onSubmitHandler = (data: NewTaskFormType) => {
-        
-        setCurrentTasks(prev => [...prev, {...data, id: "4", title: data.name, completed: false}]);
-    }
 
-    const deleteTask = (e) => {
-      //implement
-    }
+  const onSubmitHandler = (data: NewTaskFormType) => {
+    const id = uuidv4();
+    setCurrentTasks((prev) => [
+      ...prev,
+      { ...data, id, title: data.name, completed: false },
+    ]);
+  };
 
-    // Omit<TasksData, 'id'>
-    // BE: id -> uuid 
+  useEffect(() => {
+    tasks?.forEach((task) => setCurrentTasks((prev) => [...prev, task]));
+  }, [tasks]);
 
-    return (
-    <Stack w={"60vw"} sx={{alignSelf: "center", alignItems: "stretch"}}>
+  const deleteTask = (id: string) => {
+    setCurrentTasks(prev => prev.filter(task => task.id !== id));
+  };
+
+  // Omit<TasksData, 'id'>
+  // BE: id -> uuid
+
+  return (
+    <Stack w={"60vw"} sx={{ alignSelf: "center", alignItems: "stretch" }}>
       <Header submitHandler={onSubmitHandler} />
       <Stack>
-        {currentTasks.map((task) => 
-           <Task key={task.id} task={task} />
-    )}
+        {currentTasks.map((task) => (
+          <Task key={task.id} task={task} deleteTask={deleteTask} />
+        ))}
       </Stack>
     </Stack>
   );

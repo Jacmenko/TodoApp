@@ -1,7 +1,3 @@
-export type FooterProps = {
-  fetchTasks: () => void;
-};
-
 export type TaskList = TaskData[];
 
 export type TaskData = {

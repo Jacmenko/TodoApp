@@ -32,6 +32,7 @@ const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
         <form onSubmit={handleSubmit(onSubmitHandler)}>
           <TextInput
             {...register("name")}
+            sx={{borderColor: "#027148"}}
             maxLength={50}
             type="text"
             error={formState.errors.name?.message}
@@ -41,12 +42,14 @@ const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
           />
           <Textarea
             {...register("description")}
+            sx={{borderColor: "#027148"}}
             maxLength={500}
             error={formState.errors.description?.message}
             placeholder="Describe your task"
             label="Description"
           />
           <DateInput
+            
             allowDeselect
             valueFormat="DD-MM-YYYY"
             value={date}
@@ -55,7 +58,7 @@ const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
             placeholder="Select due date for the task"
             mb={"1vh"}
           />
-          <Button w={"100%"} type="submit">Add Task</Button>
+          <Button bg={"#027148"} sx={{"&:hover": {backgroundColor: "#027148"}}} w={"100%"} type="submit">Add Task</Button>
         </form>
       </Modal>
     </>
