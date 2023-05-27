@@ -4,17 +4,16 @@ import { useNotification } from "../../Notifications/useNotifications";
 
 interface IFooterProps {
   fetchTasks: () => void;
+  numberOfTasks: number
 }
 
-const Footer: React.FC<IFooterProps> = ({ fetchTasks }) => {
-  const [dummyTasks, setDummyTasks] = useState(false);
+const Footer: React.FC<IFooterProps> = ({ fetchTasks, numberOfTasks }) => {
   const { showErrorNotification } = useNotification();
 
   const fetchTasksHandler = () => {
-    if (dummyTasks) {
+    if (numberOfTasks > 0) {
       showErrorNotification("Finish your tasks!", "You still have some tasks to do!");
     } else {
-      setDummyTasks(true);
       fetchTasks();
     }
   };

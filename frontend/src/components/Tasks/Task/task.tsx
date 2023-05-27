@@ -80,7 +80,7 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
         </Grid.Col>
       </Grid>
       <Collapse in={opened} bg={"#f9f9f9"} sx={{borderRadius: "16px"}}>
-        <Text ml={"3vw"}>{task.description}</Text>
+        <Text sx={{overflowWrap: "break-word"}} ml={"3vw"}>{task.description}</Text>
       </Collapse>
     </div>
   );

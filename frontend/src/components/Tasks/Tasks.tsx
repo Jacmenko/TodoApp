@@ -7,25 +7,24 @@ import { v4 as uuidv4 } from 'uuid';
 
 interface ITasksProps {
   tasks: TaskList;
+  setTasks: React.Dispatch<React.SetStateAction<TaskList>>
 }
 
-const Tasks: React.FC<ITasksProps> = ({ tasks }) => {
-  const [currentTasks, setCurrentTasks] = useState(tasks);
-
+const Tasks: React.FC<ITasksProps> = ({ tasks, setTasks }) => {
   const onSubmitHandler = (data: NewTaskFormType) => {
     const id = uuidv4();
-    setCurrentTasks((prev) => [
+    setTasks((prev) => [
       ...prev,
       { ...data, id, title: data.name, completed: false },
     ]);
   };
 
   useEffect(() => {
-    tasks?.forEach((task) => setCurrentTasks((prev) => [...prev, task]));
-  }, [tasks]);
+    tasks?.forEach((task) => setTasks((prev) => [...prev, task]));
+  }, []);
 
   const deleteTask = (id: string) => {
-    setCurrentTasks(prev => prev.filter(task => task.id !== id));
+    setTasks(prev => prev.filter(task => task.id !== id));
   };
 
   // Omit<TasksData, 'id'>
@@ -36,7 +35,7 @@ const Tasks: React.FC<ITasksProps> = ({ tasks }) => {
     <Stack w={"90vw"} sx={{ alignSelf: "center", alignItems: "stretch" }}>
       <Header submitHandler={onSubmitHandler} />
       <Stack>
-        {currentTasks.map((task) => (
+        {tasks.map((task) => (
           <Task key={task.id} task={task} deleteTask={deleteTask} />
         ))}
       </Stack>

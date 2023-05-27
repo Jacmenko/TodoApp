@@ -7,7 +7,7 @@ import { TaskList } from "./types/types";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<TaskList>([]);
 
   const fetchTasks = async () => {
     try {
@@ -18,7 +18,7 @@ function App() {
       });
 
       const data = await res.json();
-      setTasks(data["tasks"]);
+      setTasks(prev => [...prev, ...data["tasks"]]);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +35,7 @@ function App() {
           <Navigation />
           <Tasks tasks={tasks} setTasks={setTasks} />
         </Stack>
-        <Footer fetchTasks={fetchTasks} numberOfTasks={} />
+        <Footer fetchTasks={fetchTasks} numberOfTasks={tasks.length} />
         <ScrollTop />
       </Stack>
     </MantineProvider>
