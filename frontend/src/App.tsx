@@ -33,9 +33,9 @@ function App() {
       <Stack align="center" justify="space-between" sx={{ height: "100vh" }}>
         <Stack justify="space-between">
           <Navigation />
-          <Tasks tasks={tasks} />
+          <Tasks tasks={tasks} setTasks={setTasks} />
         </Stack>
-        <Footer fetchTasks={fetchTasks} />
+        <Footer fetchTasks={fetchTasks} numberOfTasks={} />
         <ScrollTop />
       </Stack>
     </MantineProvider>

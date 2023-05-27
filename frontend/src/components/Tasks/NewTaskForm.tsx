@@ -28,7 +28,7 @@ const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Add new task" centered>
+      <Modal size={"sm"} xOffset={0} yOffset={0} opened={opened} onClose={close} title="Add new task" centered>
         <form onSubmit={handleSubmit(onSubmitHandler)}>
           <TextInput
             {...register("name")}

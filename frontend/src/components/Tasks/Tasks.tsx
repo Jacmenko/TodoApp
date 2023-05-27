@@ -1,5 +1,5 @@
 import { NewTaskFormType, TaskList } from "../../types/types";
-import { Stack, Center } from "@mantine/core";
+import { Stack, MediaQuery } from "@mantine/core";
 import Task from "./Task/Task";
 import { useState, useEffect } from "react";
 import Header from "./Header";
@@ -32,7 +32,8 @@ const Tasks: React.FC<ITasksProps> = ({ tasks }) => {
   // BE: id -> uuid
 
   return (
-    <Stack w={"60vw"} sx={{ alignSelf: "center", alignItems: "stretch" }}>
+    <MediaQuery query="(min-width: 769px)" styles={{maxWidth: "60vw"}}>
+    <Stack w={"90vw"} sx={{ alignSelf: "center", alignItems: "stretch" }}>
       <Header submitHandler={onSubmitHandler} />
       <Stack>
         {currentTasks.map((task) => (
@@ -40,6 +41,7 @@ const Tasks: React.FC<ITasksProps> = ({ tasks }) => {
         ))}
       </Stack>
     </Stack>
+    </MediaQuery>
   );
 };
 

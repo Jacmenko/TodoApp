@@ -10,7 +10,7 @@ const ScrollTop = () => {
       <Transition transition="slide-up" mounted={scroll.y > 0}>
         {(transitionStyles) => (
           <ActionIcon
-            bg={"yellow"}
+            bg={"#027148"}
             c={"white"}
             sx={{borderRadius: "16px"}}
             style={transitionStyles}

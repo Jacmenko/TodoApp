@@ -5,8 +5,8 @@ const Navigation = () => {
     <Header
       height={"10vh"}
       bg={"dark"}
-      w={"100vw"}
-      sx={{justifyContent:'center', alignItems:'center'}}
+      w={"101vw"}
+      sx={{justifyContent:'center', alignItems:'center', borderBottom: "0"}}
       display={"flex"}
     >
       <Title align="center" color="white">
