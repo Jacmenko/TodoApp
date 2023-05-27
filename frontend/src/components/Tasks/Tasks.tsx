@@ -20,14 +20,14 @@ const Tasks: React.FC<ITasksProps> = ({tasks}) => {
     // BE: id -> uuid 
 
     return (
-    <Center>
+    <Stack w={"60vw"} sx={{alignSelf: "center"}}>
       <Header submitHandler={onSubmitHandler} />
       <Stack>
         {currentTasks.map((task) => 
            <Task key={task.id} task={task} />
     )}
       </Stack>
-    </Center>
+    </Stack>
   );
 };
 

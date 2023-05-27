@@ -3,20 +3,20 @@ import { Modal, Group, Button, TextInput } from "@mantine/core";
 import { DateInput } from "@mantine/dates";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { NewTaskForm, onSubmitNewTask } from "../../types/types";
+import { NewTaskFormType, onSubmitNewTask } from "../../types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newTaskSchema } from "../../schemas/schemas";
 
 interface INewTaskProps {
   opened: boolean,
   close: () => void,
-  submitHandler: (data: NewTaskForm) => void,
+  submitHandler: (data: NewTaskFormType) => void,
 }
 
 const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
   
   const [value, setValue] = useState<Date | null>(null);
-  const { register, handleSubmit, formState } = useForm<NewTaskForm>({
+  const { register, handleSubmit, formState } = useForm<NewTaskFormType>({
     resolver: zodResolver(newTaskSchema),
   });
 
@@ -49,7 +49,7 @@ const NewTask: React.FC<INewTaskProps> = ({opened, close, submitHandler}) => {
             maw={400}
             mx="auto"
           />
-          <Button type="submit">Add Task</Button>
+          <Button w={"100%"} type="submit">Add Task</Button>
         </form>
       </Modal>
     </>

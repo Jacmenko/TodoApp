@@ -10,7 +10,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const data = (await fetch("/"));
+    const data = await fetch("/");
 
     console.log(data);
 
@@ -18,9 +18,11 @@ function App() {
   };
 
   return (
-    <Stack align="stretch">
-      <Navigation />
-      <Tasks tasks={tasks} />
+    <Stack align="center" justify="space-between" sx={{ height: "100vh" }}>
+      <Stack justify="space-between">
+        <Navigation />
+        <Tasks tasks={tasks} />
+      </Stack>
       <Footer fetchTasks={fetchTasks} />
       <ScrollTop />
     </Stack>

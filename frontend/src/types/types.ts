@@ -8,14 +8,14 @@ export type TaskData = {
   id: string;
   title: string;
   description?: string;
-  dueDate?: Date;
+  dueDate?: string;
   completed: boolean;
 };
 
-export type NewTaskForm = {
+export type NewTaskFormType = {
     name: string;
     description?: string;
-    dueDate?: Date;
+    dueDate?: string;
 }
 
 export type onSubmitNewTask = {
@@ -24,5 +24,5 @@ export type onSubmitNewTask = {
 } & onSubmit
 
 export type onSubmit = {
-    submitHandler: (data: NewTaskForm) => void;
+    submitHandler: (data: NewTaskFormType) => void;
 }

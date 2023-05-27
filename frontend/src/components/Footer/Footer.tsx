@@ -1,4 +1,4 @@
-import { Container, Title, Button } from "@mantine/core";
+import { Stack, Title, Button } from "@mantine/core";
 import { FooterProps } from "../../types/types";
 
 const Footer = (props: FooterProps) => {
@@ -7,10 +7,10 @@ const Footer = (props: FooterProps) => {
   }
 
   return (
-    <Container>
-      <Title>Don't know what to do?</Title>
+    <Stack align="center" h={"12vh"} bg={"dark"} w={'100vw'} sx={{justifySelf: "flex-end", justifyContent: "space-evenly", gap: 0}}>
+      <Title c={"white"}>Don't know what to do?</Title>
       <Button onClick={fetchTasksHandler}>Give me some tasks!</Button>
-    </Container>
+    </Stack>
   );
 };
 
