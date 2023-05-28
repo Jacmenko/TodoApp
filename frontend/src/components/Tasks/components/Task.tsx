@@ -25,16 +25,12 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
     ? dayjs(task.dueDate).diff(dayjs(), "days")
     : 0;
 
-  const formattedDate = `${(
-    "0" + (task.dueDate ? task.dueDate.getDate() : "0")
-  ).slice(-2)}-${(
-    "0" +
-    (task.dueDate
-      ? task.dueDate.getUTCMonth() + 1
-      : "0")
-  ).slice(-2)}-${
-    task.dueDate ? task.dueDate.getFullYear() : "0"
-  }`;
+  const formattedDate = task.dueDate
+    ? `${("0" + task.dueDate.getDate()).slice(-2)}-${(
+        "0" +
+        (task.dueDate.getUTCMonth() + 1)
+      ).slice(-2)}-${task.dueDate.getFullYear()}`
+    : "0";
 
   const deleteTaskHandler = () => {
     deleteTask(task.id);

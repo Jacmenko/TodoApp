@@ -23,6 +23,7 @@ const NewTask: React.FC<INewTaskProps> = ({ opened, close, submitHandler }) => {
   const onSubmitHandler = (data: NewTaskFormType) => {
     close();
     reset();
+    setDate(null)
     submitHandler({ ...data, dueDate: date ?? undefined });
   };
 
