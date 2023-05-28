@@ -1,5 +1,5 @@
 import { Router } from "express";
-import dummyTasks from "../utils/dummyTasks.json";
+import dummyTasks from "../../static/dummyTasks.json";
 
 const router = Router();
 

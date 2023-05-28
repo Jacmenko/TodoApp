@@ -1,5 +1,5 @@
 import { Stack, Title, Button } from "@mantine/core";
-import { useNotification } from "../../Notifications/useNotifications";
+import { useNotification } from "../../hooks/useNotifications";
 
 interface IFooterProps {
   fetchTasks: () => void;

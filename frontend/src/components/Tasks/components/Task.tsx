@@ -26,14 +26,14 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
     : 0;
 
   const formattedDate = `${(
-    "0" + (task.dueDate ? task.dueDate.getDate() : new Date().getDate())
+    "0" + (task.dueDate ? task.dueDate.getDate() : "0")
   ).slice(-2)}-${(
     "0" +
     (task.dueDate
       ? task.dueDate.getUTCMonth() + 1
-      : new Date().getUTCMonth() + 1)
+      : "0")
   ).slice(-2)}-${
-    task.dueDate ? task.dueDate.getFullYear() : new Date().getFullYear()
+    task.dueDate ? task.dueDate.getFullYear() : "0"
   }`;
 
   const deleteTaskHandler = () => {
