@@ -2,7 +2,7 @@ import { BsArrowUp } from "react-icons/bs";
 import { useWindowScroll } from "@mantine/hooks";
 import { Affix, ActionIcon, Transition, rem } from "@mantine/core";
 
-const ScrollTop = () => {
+const ScrollTopButton = () => {
   const [scroll, scrollTo] = useWindowScroll();
 
   return (
@@ -12,7 +12,7 @@ const ScrollTop = () => {
           <ActionIcon
             bg={"#027148"}
             c={"white"}
-            sx={{borderRadius: "16px"}}
+            sx={{ borderRadius: "16px" }}
             style={transitionStyles}
             onClick={() => scrollTo({ y: 0 })}
           >
@@ -24,4 +24,4 @@ const ScrollTop = () => {
   );
 };
 
-export default ScrollTop;
+export default ScrollTopButton;

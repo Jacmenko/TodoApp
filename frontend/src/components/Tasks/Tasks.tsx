@@ -1,13 +1,13 @@
 import { NewTaskFormType, TaskList } from "../../types/types";
 import { Stack, MediaQuery } from "@mantine/core";
-import Task from "./Task/Task";
-import { useState, useEffect } from "react";
-import Header from "./Header";
-import { v4 as uuidv4 } from 'uuid';
+import Task from "./components/Task";
+import { useEffect } from "react";
+import Header from "./components/TasksHeader";
+import { v4 as uuidv4 } from "uuid";
 
 interface ITasksProps {
   tasks: TaskList;
-  setTasks: React.Dispatch<React.SetStateAction<TaskList>>
+  setTasks: React.Dispatch<React.SetStateAction<TaskList>>;
 }
 
 const Tasks: React.FC<ITasksProps> = ({ tasks, setTasks }) => {
@@ -20,26 +20,23 @@ const Tasks: React.FC<ITasksProps> = ({ tasks, setTasks }) => {
   };
 
   useEffect(() => {
-    tasks?.forEach((task) => setTasks((prev) => [...prev, task]));
+    setTasks((prev) => [...prev, ...tasks]);
   }, []);
 
   const deleteTask = (id: string) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
+    setTasks((prev) => prev.filter((task) => task.id !== id));
   };
 
-  // Omit<TasksData, 'id'>
-  // BE: id -> uuid
-
   return (
-    <MediaQuery query="(min-width: 769px)" styles={{maxWidth: "60vw"}}>
-    <Stack w={"90vw"} sx={{ alignSelf: "center", alignItems: "stretch" }}>
-      <Header submitHandler={onSubmitHandler} />
-      <Stack>
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} deleteTask={deleteTask} />
-        ))}
+    <MediaQuery query="(min-width: 769px)" styles={{ maxWidth: "60vw" }}>
+      <Stack w={"90vw"} sx={{ alignSelf: "center", alignItems: "stretch" }}>
+        <Header submitHandler={onSubmitHandler} />
+        <Stack>
+          {tasks.map((task) => (
+            <Task key={task.id} task={task} deleteTask={deleteTask} />
+          ))}
+        </Stack>
       </Stack>
-    </Stack>
     </MediaQuery>
   );
 };

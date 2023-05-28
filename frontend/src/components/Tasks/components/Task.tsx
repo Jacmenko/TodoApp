@@ -38,17 +38,13 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
 
   const deleteTaskHandler = () => {
     deleteTask(task.id);
-  }
+  };
 
   return (
     <div>
       <Grid sx={{ boxShadow: "1px 2px 9px rgb(0 0 0 / 0.1)" }} m={0} h={"6vh"}>
-        <Grid.Col span={7} display={"flex"} sx={{alignItems: "center"}}>
-          <ActionIcon
-            onClick={toggle}
-            bg={"transparent"}
-            c={"dark"}
-          >
+        <Grid.Col span={7} display={"flex"} sx={{ alignItems: "center" }}>
+          <ActionIcon onClick={toggle} bg={"transparent"} c={"dark"}>
             {opened ? <BsChevronDown /> : <BsChevronRight />}
           </ActionIcon>
           <Stack display={"inline-flex"} justify="center" sx={{ rowGap: 0 }}>
@@ -73,14 +69,23 @@ const Task: React.FC<ITaskProps> = ({ task, deleteTask }) => {
             ) : null}
           </Stack>
         </Grid.Col>
-        <Grid.Col span={2} offset={3} display={"flex"} sx={{justifyContent: "flex-end", alignItems: "center"}}>
+        <Grid.Col
+          span={2}
+          offset={3}
+          display={"flex"}
+          sx={{ justifyContent: "flex-end", alignItems: "center" }}
+        >
           <ActionIcon onClick={deleteTaskHandler}>
-            <AiOutlineCheckCircle style={{fontSize: "2rem", color: "#027148"}} />
+            <AiOutlineCheckCircle
+              style={{ fontSize: "2rem", color: "#027148" }}
+            />
           </ActionIcon>
         </Grid.Col>
       </Grid>
-      <Collapse in={opened} bg={"#f9f9f9"} sx={{borderRadius: "16px"}}>
-        <Text sx={{overflowWrap: "break-word"}} ml={"3vw"}>{task.description}</Text>
+      <Collapse in={opened} bg={"#f9f9f9"} sx={{ borderRadius: "16px" }}>
+        <Text sx={{ overflowWrap: "break-word" }} ml={"3vw"}>
+          {task.description}
+        </Text>
       </Collapse>
     </div>
   );

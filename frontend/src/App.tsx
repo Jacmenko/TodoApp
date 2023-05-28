@@ -1,10 +1,10 @@
-import Navigation from "./components/Navbar/Navigation";
+import MainHeader from "./components/Header/MainHeader";
 import Footer from "./components/Footer/Footer";
 import Tasks from "./components/Tasks/Tasks";
 import { Stack, MantineProvider } from "@mantine/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TaskList } from "./types/types";
-import ScrollTop from "./components/ScrollTop/ScrollTop";
+import ScrollTopButton from "./components/ScrollTopButton/ScrollTopButton";
 
 function App() {
   const [tasks, setTasks] = useState<TaskList>([]);
@@ -18,7 +18,7 @@ function App() {
       });
 
       const data = await res.json();
-      setTasks(prev => [...prev, ...data["tasks"]]);
+      setTasks((prev) => [...prev, ...data["tasks"]]);
     } catch (error) {
       console.log(error);
     }
@@ -32,11 +32,11 @@ function App() {
     >
       <Stack align="center" justify="space-between" sx={{ height: "100vh" }}>
         <Stack justify="space-between">
-          <Navigation />
+          <MainHeader />
           <Tasks tasks={tasks} setTasks={setTasks} />
         </Stack>
         <Footer fetchTasks={fetchTasks} numberOfTasks={tasks.length} />
-        <ScrollTop />
+        <ScrollTopButton />
       </Stack>
     </MantineProvider>
   );

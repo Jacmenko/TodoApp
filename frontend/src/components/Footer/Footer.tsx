@@ -1,10 +1,9 @@
 import { Stack, Title, Button } from "@mantine/core";
-import { useState } from "react";
 import { useNotification } from "../../Notifications/useNotifications";
 
 interface IFooterProps {
   fetchTasks: () => void;
-  numberOfTasks: number
+  numberOfTasks: number;
 }
 
 const Footer: React.FC<IFooterProps> = ({ fetchTasks, numberOfTasks }) => {
@@ -12,7 +11,10 @@ const Footer: React.FC<IFooterProps> = ({ fetchTasks, numberOfTasks }) => {
 
   const fetchTasksHandler = () => {
     if (numberOfTasks > 0) {
-      showErrorNotification("Finish your tasks!", "You still have some tasks to do!");
+      showErrorNotification(
+        "Finish your tasks!",
+        "You still have some tasks to do!"
+      );
     } else {
       fetchTasks();
     }

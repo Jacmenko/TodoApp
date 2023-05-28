@@ -1,25 +1,25 @@
-import express from 'express';
-import cors from 'cors';
-import router from './routes/routes';
+import express from "express";
+import cors from "cors";
+import router from "./routes/routes";
 
 const app = express();
 const port = 4000;
 
 // JSON middleware
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 // parse URL encoded strings
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', router);
+app.use("/", router);
 
 // No route was taken - 404 - Resource (API endpoint) not found.
 app.use((_req, res) => {
   const response = {
-    status: 'failure',
+    status: "failure",
     data: {},
-    error: 'No matching endpoint was found.',
+    error: "No matching endpoint was found.",
   };
 
   return res.status(404).send(response);

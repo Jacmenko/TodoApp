@@ -9,16 +9,16 @@ export type TaskData = {
 };
 
 export type NewTaskFormType = {
-    name: string;
-    description?: string;
-    dueDate?: Date;
-}
+  name: string;
+  description?: string;
+  dueDate?: Date;
+};
 
 export type onSubmitNewTask = {
-    opened: boolean; 
-    close: () => void
-} & onSubmit
+  opened: boolean;
+  close: () => void;
+} & onSubmit;
 
 export type onSubmit = {
-    submitHandler: (data: NewTaskFormType) => void;
-}
+  submitHandler: (data: NewTaskFormType) => void;
+};
